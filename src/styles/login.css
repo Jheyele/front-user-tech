@@ -1,0 +1,129 @@
+.container_login {
+    width: 100vw;
+    height: 100vh;
+    background-color: #121214;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.header_login {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.header_login img {
+    width: 150px;
+}
+
+.p_login {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.section_form_login {
+    background-color: #212529;
+    width: 90%;
+    max-width: 400px;
+    height: 70%;
+    max-height: 590px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    line-height: 10px;
+}
+
+.form_login {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.p_title {
+    margin-bottom: 10px;
+    padding-left: 5px;
+    color: white;
+    width: 80%;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.div_inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_form {
+    width: 76.5%;
+    height: 48px;
+    padding-left: 8px;
+    background-color: #343b41;
+    border: none;
+    border: solid 2px transparent;
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.button_general_login {
+    padding: 0;
+    width: 80%;
+    height: 52px;
+    border: solid 2px transparent;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#button_login {
+    background-color: #4a3baf;
+    margin-top: 20px;
+}
+
+#button_login:hover {
+    transition: 1s;
+    background-color: #7868db;
+}
+
+.p_not_acount {
+    font-size: 12px;
+    color: #868e96;
+    font-weight: 700;
+    margin: 40px 0 15px 0;
+}
+
+#button_register {
+    background-color: #757c83;
+    margin-bottom: 15px;
+}
+
+#button_register:hover {
+    transition: 1s;
+    background-color: #268b43;
+}
+
+.error_login {
+    color: red;
+    display: flex;
+    width: 80%;
+    font-weight: 900;
+}
+
+.p_incorret {
+    color: red;
+}
