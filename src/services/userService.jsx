@@ -1,5 +1,10 @@
 import api from "./api";
 
+export const login = async (email, password) => {
+    const user = await api.post("/login", { email, password }).then(response => response).catch(err => err);
+    return user;
+}
+
 export const usersAll = async () => {
     const users = await api.get("/users");
     return users.data;

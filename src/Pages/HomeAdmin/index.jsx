@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModalInfoUser } from "../../components/ModalInfoUser";
-import { AuthContext } from "../../contexts/AuthContext";
 import { useApi } from "../../services/useAuth";
 import { getallTechs } from "../../services/techService";
 import { findUserById } from "../../services/userService";
@@ -15,19 +14,20 @@ export function HomeAdmin() {
     const [search, setSearch] = useState("");
     const [user, setUser] = useState({});
     const [technology, setTechnology] = useState({});
-    const token = localStorage.getItem("TOKEN");
-    const auth = useContext(AuthContext);
+    const tokenStorage = localStorage.getItem("TOKEN");
+    const userName = localStorage.getItem("NAME");
+
     const api = useApi();
 
     const navigate = useNavigate();
 
     useEffect(() => {
         async function getAll() {
-            const allUsers = await getallTechs(token);
+            const allUsers = await getallTechs(tokenStorage);
             setUsers(allUsers);
         }
         getAll();
-    }, [token]);
+    }, [tokenStorage]);
 
     useEffect(() => {
         const filtered = users.filter((user) => {
@@ -51,7 +51,7 @@ export function HomeAdmin() {
 
     const openModalUser = async (tech) => {
         setTechnology(tech);
-        const userInfo = await findUserById(token, tech.id_user);
+        const userInfo = await findUserById(tokenStorage, tech.id_user);
         setUser(userInfo);
         setModalInfoUser(true);
     };
@@ -63,7 +63,7 @@ export function HomeAdmin() {
             <div className="admin_infos">
                 <div className="name">
                     <h1>Olá, </h1>
-                    <h3>{auth.user.name}, bem vindo!</h3>
+                    <h3>{userName}, bem vindo!</h3>
                 </div>
                 <div>
                     <button onClick={logout}> Sair </button>
