@@ -29,7 +29,7 @@ export function ModalAddTech({ setModalAdd }) {
                         onChange={(event) => setNameTech(event.target.value)}
                     />
 
-                    <p className="p_modal_add">Selecionar status</p>
+                    <p className="p_modal_add">Selecionar Nivel</p>
                     <select onChange={(event) => setNivelTech(event.target.value)}>
                         <option defaultValue="Iniciante"> Iniciante </option>
                         <option value="Intermediário"> Intermediário </option>

@@ -27,7 +27,7 @@ export function ModalEditTech({ setModalEdit, technology }) {
             </div>
             <div className="general_modal_edit">
                 <div className="form_modal_edit">
-                    <p className="p_modal_edit">Nome do projeto</p>
+                    <p className="p_modal_edit">Nome</p>
                     <input
                         type={"text"}
                         defaultValue={technology.name}
@@ -35,7 +35,7 @@ export function ModalEditTech({ setModalEdit, technology }) {
                         onChange={event => setNameTech(event.target.value)}
                     />
 
-                    <p className="p_modal_edit">Nivel</p>
+                    <p className="p_modal_edit">Selecionar Nivel</p>
                     <select defaultValue={technology.nivel} onChange={event => setNivelTech(event.target.value)}>
                         <option value="Iniciante">Iniciante</option>
                         <option value="Intermediário">Intermediário</option>
