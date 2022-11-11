@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { RequireAuth } from "../contexts/RequireAuth";
-import { Home } from "../Pages/Home";
-import { HomeAdmin } from "../Pages/HomeAdmin";
-import Login from "../Pages/Login";
-import { Register } from "../Pages/Register";
+import { Home } from "../pages/Home";
+import { HomeAdmin } from "../pages/HomeAdmin";
+import Login from "../pages/Login";
+import { Register } from "../pages/Register";
+import { RequireAuth } from "../services/requireAuth";
 
 
 export function Router() {

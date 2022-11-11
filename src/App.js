@@ -1,5 +1,6 @@
+import { Router } from './router';
 import './styles/global.css';
-import { Router } from './Router';
+
 
 function App() {
 
