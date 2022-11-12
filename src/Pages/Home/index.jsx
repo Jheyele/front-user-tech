@@ -1,13 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModalAddTech } from "../../components/ModalAddTech";
 import { ModalEditTech } from "../../components/ModalEditTech";
-import { AuthContext } from "../../contexts/AuthContext";
 import { useApi } from "../../services/useAuth";
 import { techsByUser } from "../../services/techService";
 import "../../styles/home.css";
 
-export function Home() {
+export function Home({ authenticate, setAuthenticate }) {
     const navigate = useNavigate();
 
     const [modalAdd, setModalAdd] = useState(false);
@@ -15,17 +14,22 @@ export function Home() {
     const [techs, setTechs] = useState([]);
     const [technology, setTechnology] = useState({});
     const api = useApi();
-    const auth = useContext(AuthContext);
 
     const tokenStorage = localStorage.getItem("TOKEN");
+    const userId =  localStorage.getItem("ID");
+    const userName = localStorage.getItem("NAME");
+
+    if(!authenticate){
+        navigate("/");
+    }
 
     useEffect(() => {
         async function techsData() {
-            const techArr = await techsByUser(tokenStorage, auth.user.id);
+            const techArr = await techsByUser(tokenStorage, userId);
             setTechs(techArr);
         }
         techsData();
-    }, [modalAdd, modalEdit, auth, tokenStorage]);
+    }, [modalAdd, modalEdit, userId, tokenStorage]);
 
     const logout = async () => {
         await api.signout();
@@ -48,7 +52,7 @@ export function Home() {
             <div className="user_infos">
                 <div className="hello">
                     <h1>Olá, </h1>
-                    <h3>{auth.user.name}, bem vindo!</h3>
+                    <h3>{userName}, bem vindo!</h3>
                 </div>
                 <button onClick={logout}> Sair </button>
             </div>

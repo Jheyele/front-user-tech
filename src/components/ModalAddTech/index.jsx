@@ -1,16 +1,15 @@
 import "./styles.css";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { addTech } from "../../services/techService";
-import { AuthContext } from "../../contexts/AuthContext";
 
 export function ModalAddTech({ setModalAdd }) {
     const token = localStorage.getItem("TOKEN");
+    const userId = localStorage.getItem("ID");
     const [nameTech, setNameTech] = useState();
     const [nivelTech, setNivelTech] = useState();
-    const auth = useContext(AuthContext);
 
     const handleSubmit = async () => {
-        await addTech(nameTech, nivelTech, auth.user.id, token);
+        await addTech(nameTech, nivelTech, userId, token);
         setModalAdd(false);
     };
 
@@ -30,7 +29,7 @@ export function ModalAddTech({ setModalAdd }) {
                         onChange={(event) => setNameTech(event.target.value)}
                     />
 
-                    <p className="p_modal_add">Selecionar status</p>
+                    <p className="p_modal_add">Selecionar Nivel</p>
                     <select onChange={(event) => setNivelTech(event.target.value)}>
                         <option defaultValue="Iniciante"> Iniciante </option>
                         <option value="Intermediário"> Intermediário </option>

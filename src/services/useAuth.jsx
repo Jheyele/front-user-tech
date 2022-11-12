@@ -31,5 +31,6 @@ export const useApi = () => ({
     signout: async () => {
         localStorage.removeItem("TOKEN");
         localStorage.removeItem("ID");
+        localStorage.removeItem("NAME");
     }
 });

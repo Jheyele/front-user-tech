@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "../../styles/login.css";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
+import { login } from "../../services/userService";
 
-function Login() {
+function Login({ setAuthenticate }) {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [status, setStatus] = useState("");
-    const auth = useContext(AuthContext);
 
     const goRegister = () => {
         navigate("/register");
@@ -16,11 +15,15 @@ function Login() {
 
     const handleLogin = async () => {
         if (email && password) {
-            const isLogged = await auth.signin(email, password);
-            if (isLogged) {
-                navigate("/home");
-            } else {
+            const data = await login(email, password);
+            if (data.request.status === 401) {
                 setStatus("401");
+            } else {
+                setAuthenticate(true);
+                localStorage.setItem("TOKEN", data.data.token);
+                localStorage.setItem("ID", data.data.user.id);
+                localStorage.setItem("NAME", data.data.user.name);
+                navigate("/home");
             }
         }
     };
